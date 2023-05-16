@@ -22,7 +22,8 @@ jobs:
           php-version: 7.4
         
       - name: Install Dependencies
-        run: composer update --no-dev --prefer-dist --no-scripts --no-progress
+#         run: composer update --no-dev --prefer-dist --no-scripts --no-progress
+        run:  composer install --no-dev --prefer-dist --no-scripts --no-progress --no-suggest
 
 
       - name: Copy .env file
