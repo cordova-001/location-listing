@@ -34,7 +34,7 @@ jobs:
         run: chmod -R 755 storage bootstrap/cache
 
       - name: Deploy to cPanel
-        uses: AppleEducate/cpanel-deploy@v2
+        uses: SamKirkland/FTP-Deploy-Action@4.0.0
         with:
           cpanel-username: ${{ secrets.CPANEL_USERNAME }}
           cpanel-password: ${{ secrets.CPANEL_PASSWORD }}
