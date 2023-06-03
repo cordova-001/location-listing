@@ -15,14 +15,15 @@
             <section>
                 <div class="row">
                     <div class="col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2">
-                        <form class="form inputs-underline" enctype="multipart/form-data">
+                        <form class="form inputs-underline" method="POST" action = {{ route('listing.store') }}  enctype="multipart/form-data">
+                            @csrf
                             <section>
                                 <h3>About</h3>
                                 <div class="row">
                                     <div class="col-md-9 col-sm-9">
                                         <div class="form-group">
                                             <label for="title">Listing Title</label>
-                                            <input type="text" class="form-control" name="title" id="title" placeholder="Title">
+                                            <input type="text" class="form-control" name="listing_title" id="title" placeholder="Title">
                                         </div>
                                         <!--end form-group-->
                                     </div>
@@ -32,11 +33,11 @@
                                             <label for="category">Category</label>
                                             <select class="form-control selectpicker" name="category" id="category">
                                                 <option value="">Category</option>
-                                                <option value="1">Restaurant</option>
-                                                <option value="2">Event</option>
-                                                <option value="3">Adrenaline</option>
-                                                <option value="4">Sport</option>
-                                                <option value="5">Wellness</option>
+                                                <option value="Restaurant">Restaurant</option>
+                                                <option value="Event">Event</option>
+                                                <option value="Adrenaline">Adrenaline</option>
+                                                <option value="Sport">Sport</option>
+                                                <option value="Wellness">Wellness</option>
                                             </select>
                                         </div>
                                         <!--end form-group-->
@@ -78,10 +79,10 @@
                                             <label for="region">Listing Region</label>
                                             <select class="form-control selectpicker" name="region" id="region">
                                                 <option value="">Select Region</option>
-                                                <option value="1">New York</option>
-                                                <option value="2">Washington</option>
-                                                <option value="3">London</option>
-                                                <option value="4">Paris</option>
+                                                <option value="New York">New York</option>
+                                                <option value="Washington">Washington</option>
+                                                <option value="London">London</option>
+                                                <option value="Paris">Paris</option>
                                             </select>
                                         </div>
                                         <!--end form-group-->
@@ -105,12 +106,14 @@
                                 </div>
                             </section>
                             <section>
-                                <h3>Gallery</h3>
+                                {{-- <h3>Gallery</h3>
                                 <div class="file-upload-previews"></div>
-                                <div class="file-upload">
-                                    <input type="file" name="files[]" class="file-upload-input with-preview" multiple title="Click to add files" maxlength="10" accept="gif|jpg|png">
+                                <input type="file" name="gallery" /> --}}
+                                {{-- <div class="file-upload">
+                                    <input type="file" name="gallery" class="file-upload-input with-preview" multiple title="Click to add files" maxlength="10" accept="gif|jpg|png">
+                                    
                                     <span>Click or drag images here</span>
-                                </div>
+                                </div> --}}
                                 <div class="form-group">
                                     <label for="video">Video URL</label>
                                     <input type="text" class="form-control" name="video" id="video" placeholder="http://">
@@ -149,175 +152,7 @@
                                 </div>
                                 <!--end row-->
                             </section>
-                            <section>
-                                <h3>Opening Hours<span class="note">(optional)</span></h3>
-                                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading" role="tab" id="accordion-heading-1">
-                                            <h4 class="panel-title">
-                                                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#accordion-collapse-1" aria-expanded="false" aria-controls="accordion-collapse-1">
-                                                    <i class="fa fa-clock-o"></i>Add opening hours
-                                                </a>
-                                            </h4>
-                                        </div>
-                                        <!--end panel-heading-->
-                                        <div id="accordion-collapse-1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="accordion-heading-1">
-                                            <div class="panel-body">
-                                                <div class="row">
-                                                    <div class="col-md-4 col-sm-4 horizontal-input-title">
-                                                        <strong>Monday</strong>
-                                                    </div>
-                                                    <!--end col-md-4-->
-                                                    <div class="col-md-4 col-sm-4">
-                                                        <div class="form-group">
-                                                            <input type="text" class="form-control" name="open_hours[]" placeholder="Open">
-                                                        </div>
-                                                        <!--end form-group-->
-                                                    </div>
-                                                    <!--end col-md-4-->
-                                                    <div class="col-md-4 col-sm-4">
-                                                        <div class="form-group">
-                                                            <input type="text" class="form-control" name="close_hours[]" placeholder="Close">
-                                                        </div>
-                                                        <!--end form-group-->
-                                                    </div>
-                                                    <!--end col-md-4-->
-                                                </div>
-                                                <!--end row-->
-                                                <div class="row">
-                                                    <div class="col-md-4 col-sm-4 horizontal-input-title">
-                                                        <strong>Tuesday</strong>
-                                                    </div>
-                                                    <!--end col-md-4-->
-                                                    <div class="col-md-4 col-sm-4">
-                                                        <div class="form-group">
-                                                            <input type="text" class="form-control" name="open_hours[]" placeholder="Open">
-                                                        </div>
-                                                        <!--end form-group-->
-                                                    </div>
-                                                    <!--end col-md-4-->
-                                                    <div class="col-md-4 col-sm-4">
-                                                        <div class="form-group">
-                                                            <input type="text" class="form-control" name="close_hours[]" placeholder="Close">
-                                                        </div>
-                                                        <!--end form-group-->
-                                                    </div>
-                                                    <!--end col-md-4-->
-                                                </div>
-                                                <!--end row-->
-                                                <div class="row">
-                                                    <div class="col-md-4 col-sm-4 horizontal-input-title">
-                                                        <strong>Wednesday</strong>
-                                                    </div>
-                                                    <!--end col-md-4-->
-                                                    <div class="col-md-4 col-sm-4">
-                                                        <div class="form-group">
-                                                            <input type="text" class="form-control" name="open_hours[]" placeholder="Open">
-                                                        </div>
-                                                        <!--end form-group-->
-                                                    </div>
-                                                    <!--end col-md-4-->
-                                                    <div class="col-md-4 col-sm-4">
-                                                        <div class="form-group">
-                                                            <input type="text" class="form-control" name="close_hours[]" placeholder="Close">
-                                                        </div>
-                                                        <!--end form-group-->
-                                                    </div>
-                                                    <!--end col-md-4-->
-                                                </div>
-                                                <!--end row-->
-                                                <div class="row">
-                                                    <div class="col-md-4 col-sm-4 horizontal-input-title">
-                                                        <strong>Thursday</strong>
-                                                    </div>
-                                                    <!--end col-md-4-->
-                                                    <div class="col-md-4 col-sm-4">
-                                                        <div class="form-group">
-                                                            <input type="text" class="form-control" name="open_hours[]" placeholder="Open">
-                                                        </div>
-                                                        <!--end form-group-->
-                                                    </div>
-                                                    <!--end col-md-4-->
-                                                    <div class="col-md-4 col-sm-4">
-                                                        <div class="form-group">
-                                                            <input type="text" class="form-control" name="close_hours[]" placeholder="Close">
-                                                        </div>
-                                                        <!--end form-group-->
-                                                    </div>
-                                                    <!--end col-md-4-->
-                                                </div>
-                                                <!--end row-->
-                                                <div class="row">
-                                                    <div class="col-md-4 col-sm-4 horizontal-input-title">
-                                                        <strong>Friday</strong>
-                                                    </div>
-                                                    <!--end col-md-4-->
-                                                    <div class="col-md-4 col-sm-4">
-                                                        <div class="form-group">
-                                                            <input type="text" class="form-control" name="open_hours[]" placeholder="Open">
-                                                        </div>
-                                                        <!--end form-group-->
-                                                    </div>
-                                                    <!--end col-md-4-->
-                                                    <div class="col-md-4 col-sm-4">
-                                                        <div class="form-group">
-                                                            <input type="text" class="form-control" name="close_hours[]" placeholder="Close">
-                                                        </div>
-                                                        <!--end form-group-->
-                                                    </div>
-                                                    <!--end col-md-4-->
-                                                </div>
-                                                <!--end row-->
-                                                <div class="row">
-                                                    <div class="col-md-4 col-sm-4 horizontal-input-title">
-                                                        <strong>Saturday</strong>
-                                                    </div>
-                                                    <!--end col-md-4-->
-                                                    <div class="col-md-4 col-sm-4">
-                                                        <div class="form-group">
-                                                            <input type="text" class="form-control" name="open_hours[]" placeholder="Open">
-                                                        </div>
-                                                        <!--end form-group-->
-                                                    </div>
-                                                    <!--end col-md-4-->
-                                                    <div class="col-md-4 col-sm-4">
-                                                        <div class="form-group">
-                                                            <input type="text" class="form-control" name="close_hours[]" placeholder="Close">
-                                                        </div>
-                                                        <!--end form-group-->
-                                                    </div>
-                                                    <!--end col-md-4-->
-                                                </div>
-                                                <!--end row-->
-                                                <div class="row">
-                                                    <div class="col-md-4 col-sm-4 horizontal-input-title">
-                                                        <strong>Sunday</strong>
-                                                    </div>
-                                                    <!--end col-md-4-->
-                                                    <div class="col-md-4 col-sm-4">
-                                                        <div class="form-group">
-                                                            <input type="text" class="form-control" name="open_hours[]" placeholder="Open">
-                                                        </div>
-                                                        <!--end form-group-->
-                                                    </div>
-                                                    <!--end col-md-4-->
-                                                    <div class="col-md-4 col-sm-4">
-                                                        <div class="form-group">
-                                                            <input type="text" class="form-control" name="close_hours[]" placeholder="Close">
-                                                        </div>
-                                                        <!--end form-group-->
-                                                    </div>
-                                                    <!--end col-md-4-->
-                                                </div>
-                                                <!--end row-->
-                                            </div>
-                                        </div>
-                                        <!--end panel-collapse-->
-                                    </div>
-                                    <!--end panel-->
-                                </div>
-                                <!--end panel-group-->
-                            </section>
+                            
                             <section>
                                 <h3>Restaurant Menu<span class="note">(optional)</span></h3>
                                 <div class="panel-group" id="accordion-2" role="tablist" aria-multiselectable="true">
