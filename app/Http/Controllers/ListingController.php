@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Listing;
+use App\Models\Review;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -43,18 +44,28 @@ class ListingController extends Controller
     public function store(Request $request)
     {
 
-        // $request->validate([
-        //     'gallery' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        // ]);
-        
-        // dd($request->all());
-        // $imageName = time().'.'.$request->gallery->extension();  
-        // $request->gallery->move(public_path('images'), $imageName);
+        $request->validate([
+            'listing_title' => 'required',
+            'address' => 'required',
+            'phone' => 'required|unique:listings',
+            'email' => 'required|email|unique:listings',
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        if ($request->hasFile('image')) {
+        $image = $request->file('image');
+        $imageName = time() . '.' . $image->getClientOriginalExtension();
+        $image->storeAs('public/images', $imageName);
+        }
 
         $listing = Listing::create($request->all());
         return redirect()->route('listing.index');
+    }
 
-        
+    public function createReview(Reqeuest $request)
+    {
+        $review = Review::create($request->all());
+        return redirect()->route('listing.details');
     }
 
     /**

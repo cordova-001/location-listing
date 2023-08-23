@@ -38,26 +38,6 @@
                                 </section>
                             </section>
 
-                            <section class="box">
-                                <h2>Opening Hours</h2>
-                                <dl>
-                                    <dt>Monday</dt>
-                                    <dd>08:00am - 11:00pm</dd>
-                                    <dt>Tuesday</dt>
-                                    <dd>08:00am - 11:00pm</dd>
-                                    <dt>Wednesday</dt>
-                                    <dd>12:00am - 11:00pm</dd>
-                                    <dt>Thursday</dt>
-                                    <dd>08:00am - 11:00pm</dd>
-                                    <dt>Friday</dt>
-                                    <dd>03:00pm - 02:00am</dd>
-                                    <dt>Saturday</dt>
-                                    <dd>03:00pm - 02:00am</dd>
-                                    <dt>Sunday</dt>
-                                    <dd>Closed</dd>
-                                </dl>
-                            </section>
-
                             <section>
                                 <h2>Reviews</h2>
                                 <div class="review">
@@ -98,18 +78,26 @@
 
                             <section id="write-a-review">
                                 <h2>Write a Review</h2>
-                                <form class="clearfix form inputs-underline">
-                                    <div class="box">
+                                <form class="clearfix form inputs-underline" method="post" action="">
+                                    <div class="box" style="border: 1px solid;">
                                         <div class="comment">
                                             <div class="row">
-                                                <div class="col-md-7">
+                                                <div class="col-md-12">
                                                     <div class="comment-title">
                                                         <h4>Review your experience</h4>
                                                     </div>
                                                     <!--end title-->
                                                     <div class="form-group">
-                                                        <label for="name">Title of your review<em>*</em></label>
+                                                        <label for="name">Name<em>*</em></label>
                                                         <input type="text" class="form-control" id="name" name="name" placeholder="Beautiful place!" required="">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        
+                                                        <input type="text"  hidden id="name" name="listing_id" value="{{ $listings->id }}">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="name">Title of your review<em>*</em></label>
+                                                        <input type="text" class="form-control" id="name" name="title" placeholder="Beautiful place!" required="">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="message">Your Message<em>*</em></label>
@@ -118,24 +106,7 @@
                                                     <!--end form-group-->
                                                 </div>
                                                 <!--end col-md-8-->
-                                                <div class="col-md-5">
-                                                    <div class="comment-title">
-                                                        <h4>Rating</h4>
-                                                    </div>
-                                                    <!--end title-->
-                                                    <dl class="visitor-rating">
-                                                        <dt>Comfort</dt>
-                                                        <dd class="star-rating active" data-name="comfort"></dd>
-                                                        <dt>Location</dt>
-                                                        <dd class="star-rating active" data-name="location"></dd>
-                                                        <dt>Facilities</dt>
-                                                        <dd class="star-rating active" data-name="facilities"></dd>
-                                                        <dt>Staff</dt>
-                                                        <dd class="star-rating active" data-name="staff"></dd>
-                                                        <dt>Value for money</dt>
-                                                        <dd class="star-rating active" data-name="value"></dd>
-                                                    </dl>
-                                                </div>
+                                                
                                                 <!--end col-md-4-->
                                             </div>
                                             <!--end row-->

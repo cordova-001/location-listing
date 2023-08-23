@@ -21,6 +21,7 @@ class Listing extends Model
             'phone',
             'email',
             'website',
+            'image',
             'video_url', 
             'facebook',
             'twitter',
