@@ -2,18 +2,12 @@
 @section('content')
 <div id="page-content">
         <div class="container">
-            <ol class="breadcrumb">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Pages</a></li>
-                <li class="active">Contact</li>
-            </ol>
-
             <div class="row">
                 <div class="col-md-9 col-sm-9">
                     <section class="page-title">
                         <div class="pull-left">
-                            <h1>Marky’s Restaurant</h1>
-                            <h3>63 Birch Street</h3>
+                            <h1>{{ $listings->listing_title }}</h1>
+                            <h3>{{ $listings->category }}</h3>
                             <div class="rating-passive" data-rating="4">
                                 <span class="stars"></span>
                                 <span class="reviews">6</span>
@@ -26,24 +20,13 @@
                     <div class="row">
                         <div class="col-md-8 col-sm-12">
                             <section>
-                                <div class="gallery detail">
-                                    <div class="owl-carousel" data-owl-nav="0" data-owl-dots="1">
+                                <div class="">
+                                    
                                         <div class="image">
-                                            <div class="bg-transfer"><img src="assets/img/items/1.jpg" alt=""></div>
+                                            <div class=""><img src="{{ asset('assets/img/items/mini.jpg') }}" alt=""></div>
                                         </div>
-                                        <div class="image">
-                                            <div class="bg-transfer"><img src="assets/img/items/30.jpg" alt=""></div>
-                                        </div>
-                                        <div class="image">
-                                            <div class="bg-transfer"><img src="assets/img/items/31.jpg" alt=""></div>
-                                        </div>
-                                        <div class="image">
-                                            <div class="bg-transfer"><img src="assets/img/items/21.jpg" alt=""></div>
-                                        </div>
-                                        <div class="image">
-                                            <div class="bg-transfer"><img src="assets/img/items/23.jpg" alt=""></div>
-                                        </div>
-                                    </div>
+                                        
+                                   
                                     <!--end owl-carousel-->
                                 </div>
                                 <!--end gallery-->
@@ -51,21 +34,7 @@
 
                             <section>
                                 <section>
-                                    <h2>About this listing</h2>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec efficitur tristique enim, ac tincidunt
-                                        massa pulvinar non. Donec scelerisque libero eu tincidunt cursus. Phasellus vel commodo nunc, nec suscipit
-                                        enim. Integer suscipit, mauris consectetur pharetra ultrices, neque sem malesuada mauris, id tristique
-                                        ante leo vel magna. Phasellus ac risus vel erat elementum fringilla et non massa. Pellentesque habitant
-                                        morbi tristique senectus et netus et malesuada fames ac turpis egestas.
-                                    </p>
-                                    <p>
-                                        In ut varius magna. Integer ullamcorper tincidunt molestie. Morbi consequat sem non nulla laoreet,
-                                        non commodo tellus elementum. Sed tincidunt, lorem vitae rhoncus pharetra, diam ex pharetra erat, eu
-                                        lacinia mi libero vitae lectus. Nullam cursus bibendum magna ut elementum. Fusce eget mauris in erat
-                                        gravida pretium sed eget massa.
-                                        gravida pretium sed eget massa.
-                                    </p>
+                                    {{ $listings->description }}
                                 </section>
                             </section>
 
@@ -197,10 +166,10 @@
                                             </div>
                                             <hr>
                                             <address>
-                                                <figure><i class="fa fa-map-marker"></i>3858 Marion Street<br>Morrisville, VT 05661 </figure>
-                                                <figure><i class="fa fa-envelope"></i><a href="#">email@example.com</a></figure>
-                                                <figure><i class="fa fa-phone"></i>316-436-8619</figure>
-                                                <figure><i class="fa fa-globe"></i><a href="#">www.markysrestaurant.com</a></figure>
+                                                <figure><i class="fa fa-map-marker"></i>{{ $listings->address }} </figure>
+                                                <figure><i class="fa fa-envelope"></i><a href="#">{{ $listings->email }}</a></figure>
+                                                <figure><i class="fa fa-phone"></i>{{ $listings->phone }}</figure>
+                                                <figure><i class="fa fa-globe"></i><a href="#">{{ $listings->website }}</a></figure>
                                             </address>
                                         </div>
                                     </section>
@@ -221,7 +190,11 @@
                             </section>
                             <section>
                                 <h2>Social Share</h2>
-                                <div class="social-share"></div>
+                                <div class="social-share">{{ $listings->video_url }}</div>
+                                <div class="social-share">{{ $listings->facebook }}</div>
+                                <div class="social-share">{{ $listings->twitter }}</div>
+                                <div class="social-share">{{ $listings->youtube }}</div>
+                                <div class="social-share">{{ $listings->pinterest }}</div>
                             </section>
                         </div>
                         <!--end col-md-3-->

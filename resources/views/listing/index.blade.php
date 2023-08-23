@@ -3,9 +3,7 @@
     <div id="page-content">
         <div class="container">
             <ol class="breadcrumb">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Pages</a></li>
-                <li class="active">Contact</li>
+                
             </ol>
             <div class="row">
                 <div class="col-md-9 col-sm-9">
@@ -46,10 +44,10 @@
                         @foreach ($listings as $listing)
                             <div class="item item-row" data-id="15" data-latitude="40.73659201" data-longitude="-73.80778313">
                                 <figure class="ribbon">Top</figure>
-                                <a href="{{ route('listing.details', $listing->listing_title) }}">
-                                    <div class="image bg-transfer">
+                                <a href="{{ route('listing.details', ['id'=>$listing->id]) }}">
+                                    <div class="image">
                                         <figure>Happy hour: 18:00 - 19:00</figure>
-                                        <img src="assets/img/items/3.jpg" alt="">
+                                        <img src="{{ asset('assets/img/items/mini.jpg') }}" alt="">
                                     </div>
                                     <!--end image-->
                                     <div class="map"></div>
@@ -91,29 +89,7 @@
                         <!--end item.row-->
                     </section>
 
-                    <section>
-                        <div class="center">
-                            <nav aria-label="Page navigation">
-                                <ul class="pagination">
-                                    <li class="disabled previous">
-                                        <a href="#" aria-label="Previous">
-                                            <i class="arrow_left"></i>
-                                        </a>
-                                    </li>
-                                    <li><a href="#">1</a></li>
-                                    <li><a href="#">2</a></li>
-                                    <li class="active"><a href="#">3</a></li>
-                                    <li><a href="#">4</a></li>
-                                    <li><a href="#">5</a></li>
-                                    <li class="next">
-                                        <a href="#" aria-label="Next">
-                                            <i class="arrow_right"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </nav>
-                        </div>
-                    </section>
+                    
                 </div>
                 <!--end col-md-9-->
 
@@ -180,7 +156,7 @@
                                     </div>
                                     <!--end description-->
                                     <div class="image bg-transfer">
-                                        <img src="assets/img/items/1.jpg" alt="">
+                                        <img src="assets/img/items/mini.jpg" alt="">
                                     </div>
                                     <!--end image-->
                                 </a>

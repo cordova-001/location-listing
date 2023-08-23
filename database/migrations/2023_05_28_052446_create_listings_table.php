@@ -17,7 +17,7 @@ class CreateListingsTable extends Migration
             $table->id();
             $table->string('listing_title')->nullable();
             $table->string('category')->nullable();
-            $table->string('description')->nullable();
+            $table->text('description')->nullable();
             $table->string('tags')->nullable();
             $table->string('address')->nullable();
             $table->string('region')->nullable();

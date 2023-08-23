@@ -9,7 +9,7 @@ class Listing extends Model
 {
     use HasFactory;
 
-    protected $table = 'listings';
+    protected $table = 'listings'; 
 
     protected $fillable = [
             'listing_title',

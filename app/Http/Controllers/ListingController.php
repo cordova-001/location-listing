@@ -63,9 +63,15 @@ class ListingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Listing $listing)
+    public function show($id)
     {
-        return view('listing.details', compact('listing'));
+        
+        $listings = Listing::find($id);
+        if (!$listings) {
+        // Return a 404 error response, or redirect to another page, or show an error message, etc.
+        return abort(404, 'Listing not found.');
+    }
+        return view('listing.details', compact('listings'));
     }
 
     /**
