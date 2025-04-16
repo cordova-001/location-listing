@@ -1,306 +1,442 @@
 @extends('layout.app')
 @section('content')
-<div id="page-content">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-9 col-sm-9">
-                    <section class="page-title">
-                        <div class="pull-left">
-                            <h1>{{ $listings->listing_title }}</h1>
-                            <h3>{{ $listings->category }}</h3>
-                            <div class="rating-passive" data-rating="4">
-                                <span class="stars"></span>
-                                <span class="reviews">6</span>
-                            </div>
-                        </div>
-                        <!--end page-title-->
-                        <a href="#write-a-review" class="btn btn-primary btn-framed btn-rounded btn-light-frame icon scroll pull-right"><i class="fa fa-star"></i>Write a review</a>
-                    </section>
-
-                    <div class="row">
-                        <div class="col-md-8 col-sm-12">
-                            <section>
-                                <div class="">
-                                    
-                                        <div class="image">
-                                            <div class=""><img src="{{ asset('assets/img/items/mini.jpg') }}" alt=""></div>
-                                        </div>
-                                        
-                                   
-                                    <!--end owl-carousel-->
-                                </div>
-                                <!--end gallery-->
-                            </section>
-
-                            <section>
-                                <section>
-                                    {{ $listings->description }}
-                                </section>
-                            </section>
-
-                            <section>
-                                <h2>Reviews</h2>
-                                <div class="review">
-                                    <div class="image">
-                                        <div class="bg-transfer"><img src="assets/img/person-02.jpg" alt=""></div>
-                                    </div>
-                                    <div class="description">
-                                        <figure>
-                                            <div class="rating-passive" data-rating="4">
-                                                <span class="stars"></span>
-                                                <span class="reviews">6</span>
-                                            </div>
-                                            <span class="date">09.05.2016</span>
-                                        </figure>
-                                        <p>Donec nec tristique sapien. Aliquam ante felis, sagittis sodales diam sollicitudin, dapibus semper turpis</p>
-                                    </div>
-                                </div>
-                                <!--end review-->
-                                <div class="review">
-                                    <div class="image">
-                                        <div class="bg-transfer"><img src="assets/img/person-01.jpg" alt=""></div>
-                                    </div>
-                                    <div class="description">
-                                        <figure>
-                                            <div class="rating-passive" data-rating="5">
-                                                <span class="stars"></span>
-                                                <span class="reviews">6</span>
-                                            </div>
-                                            <span class="date">09.05.2016</span>
-                                        </figure>
-                                        <p>Vestibulum vel est massa. Integer pellentesque non augue et accumsan. Maecenas molestie elit nibh,
-                                            vel vestibulum leo condimentum quis. Duis ac orci a magna auctor vehicula.
-                                        </p>
-                                    </div>
-                                </div>
-                                <!--end review-->
-                            </section>
-
-                            <section id="write-a-review">
-                                <h2>Write a Review</h2>
-                                <form class="clearfix form inputs-underline" method="post" action="">
-                                    <div class="box" style="border: 1px solid;">
-                                        <div class="comment">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <div class="comment-title">
-                                                        <h4>Review your experience</h4>
-                                                    </div>
-                                                    <!--end title-->
-                                                    <div class="form-group">
-                                                        <label for="name">Name<em>*</em></label>
-                                                        <input type="text" class="form-control" id="name" name="name" placeholder="Beautiful place!" required="">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        
-                                                        <input type="text"  hidden id="name" name="listing_id" value="{{ $listings->id }}">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="name">Title of your review<em>*</em></label>
-                                                        <input type="text" class="form-control" id="name" name="title" placeholder="Beautiful place!" required="">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="message">Your Message<em>*</em></label>
-                                                        <textarea class="form-control" id="message" rows="8" name="message" required="" placeholder="Describe your experience"></textarea>
-                                                    </div>
-                                                    <!--end form-group-->
-                                                </div>
-                                                <!--end col-md-8-->
-                                                
-                                                <!--end col-md-4-->
-                                            </div>
-                                            <!--end row-->
-                                            <br>
-                                            <div class="form-group pull-right">
-                                                <button type="submit" class="btn btn-primary btn-rounded">Send Review</button>
-                                            </div>
-                                            <!--end form-group-->
-                                        </div>
-                                        <!--end comment-->
-                                    </div>
-                                    <!--end review-->
-                                </form>
-                                <!--end form-->
-                            </section>
-                        </div>
-                        <!--end col-md-6-->
-                        <div class="col-md-4 col-sm-12">
-                            <section>
-                                <div class="detail-sidebar">
-                                    <section class="shadow">
-                                        <div class="map height-250px" id="map-detail"></div>
-                                        <!--end map-->
-                                        <div class="content">
-                                            <div class="vertical-aligned-elements">
-                                                <div class="element"><img src="assets/img/logo-2.png" alt=""></div>
-                                                <div class="element text-align-right"><a href="#" class="btn btn-primary btn-rounded btn-xs">Claim</a></div>
-                                            </div>
-                                            <hr>
-                                            <address>
-                                                <figure><i class="fa fa-map-marker"></i>{{ $listings->address }} </figure>
-                                                <figure><i class="fa fa-envelope"></i><a href="#">{{ $listings->email }}</a></figure>
-                                                <figure><i class="fa fa-phone"></i>{{ $listings->phone }}</figure>
-                                                <figure><i class="fa fa-globe"></i><a href="#">{{ $listings->website }}</a></figure>
-                                            </address>
-                                        </div>
-                                    </section>
-                                </div>
-                                <!--end detail-sidebar-->
-                            </section>
-                            <section>
-                                <h2>Features</h2>
-                                <ul class="tags">
-                                    <li>Wi-Fi</li>
-                                    <li>Parking</li>
-                                    <li>TV</li>
-                                    <li>Alcohol</li>
-                                    <li>Vegetarian</li>
-                                    <li>Take-out</li>
-                                    <li>Balcony</li>
-                                </ul>
-                            </section>
-                            <section>
-                                <h2>Social Share</h2>
-                                <div class="social-share">{{ $listings->video_url }}</div>
+{{--
+{{ $listings->category }}
+<img src="{{ asset('images/' . $listings->image) }}" alt="">
+{{ $listings->description }}
+<address>
+    <figure><i class="fa fa-map-marker"></i>{{ $listings->address }} </figure>
+    <figure><i class="fa fa-envelope"></i><a href="#">{{ $listings->email }}</a></figure>
+    <figure><i class="fa fa-phone"></i>{{ $listings->phone }}</figure>
+    <figure><i class="fa fa-globe"></i><a href="#">{{ $listings->website }}</a></figure>
+</address>
+<div class="social-share">{{ $listings->video_url }}</div>
                                 <div class="social-share">{{ $listings->facebook }}</div>
                                 <div class="social-share">{{ $listings->twitter }}</div>
                                 <div class="social-share">{{ $listings->youtube }}</div>
-                                <div class="social-share">{{ $listings->pinterest }}</div>
-                            </section>
-                        </div>
-                        <!--end col-md-3-->
-                    </div>
-                    <!--end row-->
-                </div>
-                <!--end col-md-9-->
+                                <div class="social-share">{{ $listings->pinterest }}</div> --}}
 
-                <div class="col-md-3 col-sm-3">
-                    <aside class="sidebar">
-                        <section>
-                            <h2>Search Filter</h2>
-                            <form class="form inputs-underline">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" name="keyword" placeholder="Enter keyword">
-                                </div>
-                                <!--end form-group-->
-                                <div class="form-group">
-                                    <select class="form-control selectpicker" name="location">
-                                        <option value="">Location</option>
-                                            <option value="1">New York</option>
-                                            <option value="2">Washington</option>
-                                            <option value="3">London</option>
-                                            <option value="4">Paris</option>
-                                    </select>
-                                </div>
-                                <!--end form-group-->
-                                <div class="form-group">
-                                    <select class="form-control selectpicker" name="category">
-                                        <option value="">Category</option>
-                                            <option value="1">Restaurant</option>
-                                            <option value="2">Event</option>
-                                            <option value="3">Adrenaline</option>
-                                            <option value="4">Sport</option>
-                                            <option value="5">Wellness</option>
-                                    </select>
-                                </div>
-                                <!--end form-group-->
-                                <div class="form-group">
-                                    <div class="ui-slider" id="price-slider" data-value-min="10" data-value-max="400" data-value-type="price" data-currency="$" data-currency-placement="before">
-                                        <div class="values clearfix">
-                                            <input class="value-min" name="value-min[]" readonly>
-                                            <input class="value-max" name="value-max[]" readonly>
-                                        </div>
-                                        <div class="element"></div>
-                                    </div>
-                                    <!--end price-slider-->
-                                </div>
-                                <!--end form-group-->
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-primary pull-right">Search Now<i class="fa fa-search"></i></button>
-                                </div>
-                                <!--end form-group-->
-                            </form>
-                        </section>
-                        <section>
-                            <h2>Recent Items</h2>
-                            <div class="item" data-id="1">
-                                <a href="detail.html">
-                                    <div class="description">
-                                        <figure>Average Price: $8 - $30</figure>
-                                        <div class="label label-default">Restaurant</div>
-                                        <h3>Marky’s Restaurant</h3>
-                                        <h4>63 Birch Street</h4>
-                                    </div>
-                                    <!--end description-->
-                                    <div class="image bg-transfer">
-                                        <img src="assets/img/items/1.jpg" alt="">
-                                    </div>
-                                    <!--end image-->
-                                </a>
-                                <div class="controls-more">
-                                    <ul>
-                                        <li><a href="#">Add to favorites</a></li>
-                                        <li><a href="#">Add to watchlist</a></li>
-                                        <li><a href="#" class="quick-detail">Quick detail</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <!--end item-->
-                            <div class="item" data-id="2">
-                                <a href="detail.html">
-                                    <div class="description">
-                                        <div class="label label-default">Restaurant</div>
-                                        <h3>Ironapple</h3>
-                                        <h4>4209 Glenview Drive</h4>
-                                    </div>
-                                    <!--end description-->
-                                    <div class="image bg-transfer">
-                                        <img src="assets/img/items/2.jpg" alt="">
-                                    </div>
-                                    <!--end image-->
-                                </a>
-                                <div class="controls-more">
-                                    <ul>
-                                        <li><a href="#">Add to favorites</a></li>
-                                        <li><a href="#">Add to watchlist</a></li>
-                                        <li><a href="#" class="quick-detail">Quick detail</a></li>
-                                    </ul>
-                                </div>
-                                <!--end controls-more-->
-                            </div>
-                            <!--end item-->
-                            <div class="item" data-id="15">
-                                <figure class="ribbon">Top</figure>
-                                <a href="detail.html">
-                                    <div class="description">
-                                        <figure>Happy hour: 18:00 - 19:00</figure>
-                                        <div class="label label-default">Bar & Grill</div>
-                                        <h3>Bambi Planet Houseboat Bar& Grill </h3>
-                                        <h4>3857 Losh Lane</h4>
-                                    </div>
-                                    <!--end description-->
-                                    <div class="image bg-transfer">
-                                        <img src="assets/img/items/3.jpg" alt="">
-                                    </div>
-                                    <!--end image-->
-                                </a>
-                                <div class="controls-more">
-                                    <ul>
-                                        <li><a href="#">Add to favorites</a></li>
-                                        <li><a href="#">Add to watchlist</a></li>
-                                        <li><a href="#" class="quick-detail">Quick detail</a></li>
-                                    </ul>
-                                </div>
-                                <!--end controls-more-->
-                            </div>
-                            <!--end item-->
-                        </section>
-                    </aside>
-                    <!--end sidebar-->
-                </div>
-                <!--end col-md-3-->
-            </div>
-        </div>
-        <!--end container-->
-    </div>
+
+    <section class="pg-list-1">
+		<div class="container">
+			<div class="row">
+				<div class="pg-list-1-left"> <a href="#"><h3>{{ $listings->listing_title }}</h3></a>
+					<div class="list-rat-ch"> <span>5.0</span> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> </div>
+					<h4>{{ $listings->region }}</h4>
+					<p><b>Address:</b> {{ $listings->address }}</p>
+					<div class="list-number pag-p1-phone">
+						<ul>
+							<li><i class="fa fa-phone" aria-hidden="true"></i> +01 1245 2541</li>
+							<li><i class="fa fa-envelope" aria-hidden="true"></i> localdir@webdir.com</li>
+							<li><i class="fa fa-user" aria-hidden="true"></i> johny depp</li>
+						</ul>
+					</div>
+				</div>
+				<div class="pg-list-1-right">
+					<div class="list-enqu-btn pg-list-1-right-p1">
+						<ul>
+							<li><a href="#ld-rew"><i class="fa fa-star-o" aria-hidden="true"></i> Write Review</a> </li>
+							<li><a href="#"><i class="fa fa-commenting-o" aria-hidden="true"></i> Send SMS</a> </li>
+							<li><a href="#"><i class="fa fa-phone" aria-hidden="true"></i> Call Now</a> </li>
+							<li><a href="#" data-dismiss="modal" data-toggle="modal" data-target="#list-quo"><i class="fa fa-usd" aria-hidden="true"></i> Get Quotes</a> </li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="list-pg-bg">
+		<div class="container">
+			<div class="row">
+				<div class="com-padd">
+					<div class="list-pg-lt list-page-com-p">
+						<!--LISTING DETAILS: LEFT PART 1-->
+						<div class="pglist-p1 pglist-bg pglist-p-com" id="ld-abour">
+							<div class="pglist-p-com-ti">
+								<h3><span>About</span> Taj Luxury</h3> </div>
+							<div class="list-pg-inn-sp">
+								<div class="share-btn">
+									<ul>
+										<li><a href="#"><i class="fa fa-facebook fb1"></i> Share On Facebook</a> </li>
+										<li><a href="#"><i class="fa fa-twitter tw1"></i> Share On Twitter</a> </li>
+										<li><a href="#"><i class="fa fa-google-plus gp1"></i> Share On Google Plus</a> </li>
+									</ul>
+								</div>
+								<p>Taj Luxury Hotels & Resorts presents award winning luxury hotels and resorts in India, Indonesia, Mauritius, Egypt and Saudi Arabia.It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution </p>
+								<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet.</p>
+							</div>
+						</div>
+						<!--END LISTING DETAILS: LEFT PART 1-->
+						<!--LISTING DETAILS: LEFT PART 2-->
+						<div class="pglist-p2 pglist-bg pglist-p-com" id="ld-ser">
+							<div class="pglist-p-com-ti">
+								<h3><span>Services</span> Offered</h3> </div>
+							<div class="list-pg-inn-sp">
+								<p>Taj Luxury Hotels & Resorts provide 24-hour Business Centre, Clinic, Internet Access Centre, Babysitting, Butler Service in Villas and Seaview Suite, House Doctor on Call, Airport Butler Service, Lobby Lounge </p>
+								<div class="row pg-list-ser">
+									<ul>
+										<li class="col-md-4">
+											<div class="pg-list-ser-p1"><img src="images/services/ser1.jpg" alt="" /> </div>
+											<div class="pg-list-ser-p2">
+												<h4>Restaurant and Bar</h4> </div>
+										</li>
+										<li class="col-md-4">
+											<div class="pg-list-ser-p1"><img src="images/services/ser2.jpg" alt="" /> </div>
+											<div class="pg-list-ser-p2">
+												<h4>Room Booking</h4> </div>
+										</li>
+										<li class="col-md-4">
+											<div class="pg-list-ser-p1"><img src="images/services/ser3.jpg" alt="" /> </div>
+											<div class="pg-list-ser-p2">
+												<h4>Corporate Events</h4> </div>
+										</li>
+										<li class="col-md-4">
+											<div class="pg-list-ser-p1"><img src="images/services/ser4.jpg" alt="" /> </div>
+											<div class="pg-list-ser-p2">
+												<h4>Wedding Hall</h4> </div>
+										</li>
+										<li class="col-md-4">
+											<div class="pg-list-ser-p1"><img src="images/services/ser5.jpg" alt="" /> </div>
+											<div class="pg-list-ser-p2">
+												<h4>Travel & Transport</h4> </div>
+										</li>
+										<li class="col-md-4">
+											<div class="pg-list-ser-p1"><img src="images/services/ser6.jpg" alt="" /> </div>
+											<div class="pg-list-ser-p2">
+												<h4>All Amenities</h4> </div>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<!--END LISTING DETAILS: LEFT PART 2-->
+						<!--LISTING DETAILS: LEFT PART 3-->
+						<div class="pglist-p3 pglist-bg pglist-p-com" id="ld-gal">
+							<div class="pglist-p-com-ti">
+								<h3><span>Photo</span> Gallery</h3> </div>
+							<div class="list-pg-inn-sp">
+								<div id="myCarousel" class="carousel slide" data-ride="carousel">
+									<!-- Indicators -->
+									<ol class="carousel-indicators">
+										<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+										<li data-target="#myCarousel" data-slide-to="1"></li>
+										<li data-target="#myCarousel" data-slide-to="2"></li>
+										<li data-target="#myCarousel" data-slide-to="3"></li>
+									</ol>
+									<!-- Wrapper for slides -->
+									<div class="carousel-inner">
+										<div class="item active"> <img src="images/slider/1.jpg" alt="Los Angeles"> </div>
+										<div class="item"> <img src="images/slider/2.jpg" alt="Chicago"> </div>
+										<div class="item"> <img src="images/slider/3.jpg" alt="New York"> </div>
+										<div class="item"> <img src="images/slider/4.jpg" alt="New York"> </div>
+									</div>
+									<!-- Left and right controls -->
+									<a class="left carousel-control" href="#myCarousel" data-slide="prev"> <i class="fa fa-angle-left list-slider-nav" aria-hidden="true"></i> </a>
+									<a class="right carousel-control" href="#myCarousel" data-slide="next"> <i class="fa fa-angle-right list-slider-nav list-slider-nav-rp" aria-hidden="true"></i> </a>
+								</div>
+							</div>
+						</div>
+						<!--END LISTING DETAILS: LEFT PART 3-->
+						<!--LISTING DETAILS: LEFT PART 4-->
+						<div class="pglist-p3 pglist-bg pglist-p-com" id="ld-roo">
+							<div class="pglist-p-com-ti">
+								<h3><span>Room</span> Booking</h3> </div>
+							<div class="list-pg-inn-sp">
+								<div class="home-list-pop list-spac list-spac-1 list-room-mar-o">
+									<!--LISTINGS IMAGE-->
+									<div class="col-md-3"> <img src="images/room/1.jpg" alt=""> </div>
+									<!--LISTINGS: CONTENT-->
+									<div class="col-md-9 home-list-pop-desc inn-list-pop-desc list-room-deta"> <a href="#!"><h3>Ultra Deluxe Rooms</h3></a>
+										<div class="list-rat-ch list-room-rati"> <span>5.0</span> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> </div>
+										<div class="list-room-type list-rom-ami">
+											<ul>
+												<li>
+													<p><b>Amenities:</b> </p>
+												</li>
+												<li><img src="images/icon/a7.png" alt=""> Wi-Fi</li>
+												<li><img src="images/icon/a4.png" alt=""> Air Conditioner </li>
+												<li><img src="images/icon/a3.png" alt=""> Swimming Pool</li>
+												<li><img src="images/icon/a2.png" alt=""> Bar</li>
+												<li><img src="images/icon/a5.png" alt=""> Bathroom</li>
+												<li><img src="images/icon/a6.png" alt=""> TV</li>
+												<li><img src="images/icon/a9.png" alt=""> Spa</li>
+												<li><img src="images/icon/a10.png" alt=""> Music</li>
+												<li><img src="images/icon/a11.png" alt=""> Parking</li>
+											</ul>
+										</div> <span class="home-list-pop-rat list-rom-pric">$940</span>
+										<div class="list-enqu-btn">
+											<ul>
+												<li><a href="#!"><i class="fa fa-usd" aria-hidden="true"></i> Get Quotes</a> </li>
+												<li><a href="#!"><i class="fa fa-commenting-o" aria-hidden="true"></i> Send SMS</a> </li>
+												<li><a href="#!"><i class="fa fa-phone" aria-hidden="true"></i> Call Now</a> </li>
+												<li><a href="#!"><i class="fa fa-usd" aria-hidden="true"></i> Book Now</a> </li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<div class="home-list-pop list-spac list-spac-1 list-room-mar-o">
+									<!--LISTINGS IMAGE-->
+									<div class="col-md-3"> <img src="images/room/2.jpg" alt=""> </div>
+									<!--LISTINGS: CONTENT-->
+									<div class="col-md-9 home-list-pop-desc inn-list-pop-desc list-room-deta"> <a href="#!"><h3>Premium Rooms(Executive)</h3></a>
+										<div class="list-rat-ch list-room-rati"> <span>4.0</span> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> </div>
+										<div class="list-room-type list-rom-ami">
+											<ul>
+												<li>
+													<p><b>Amenities:</b> </p>
+												</li>
+												<li><img src="images/icon/a7.png" alt=""> Wi-Fi</li>
+												<li><img src="images/icon/a4.png" alt=""> Air Conditioner </li>
+												<li><img src="images/icon/a3.png" alt=""> Swimming Pool</li>
+												<li><img src="images/icon/a2.png" alt=""> Bar</li>
+												<li><img src="images/icon/a5.png" alt=""> Bathroom</li>
+												<li><img src="images/icon/a6.png" alt=""> TV</li>
+											</ul>
+										</div> <span class="home-list-pop-rat list-rom-pric">$620</span>
+										<div class="list-enqu-btn">
+											<ul>
+												<li><a href="#!"><i class="fa fa-usd" aria-hidden="true"></i> Get Quotes</a> </li>
+												<li><a href="#!"><i class="fa fa-commenting-o" aria-hidden="true"></i> Send SMS</a> </li>
+												<li><a href="#!"><i class="fa fa-phone" aria-hidden="true"></i> Call Now</a> </li>
+												<li><a href="#!"><i class="fa fa-usd" aria-hidden="true"></i> Book Now</a> </li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<div class="home-list-pop list-spac list-spac-1 list-room-mar-o">
+									<!--LISTINGS IMAGE-->
+									<div class="col-md-3"> <img src="images/room/3.jpg" alt=""> </div>
+									<!--LISTINGS: CONTENT-->
+									<div class="col-md-9 home-list-pop-desc inn-list-pop-desc list-room-deta"> <a href="#!"><h3>Normal Rooms(Executive)</h3></a>
+										<div class="list-rat-ch list-room-rati"> <span>3.0</span> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> </div>
+										<div class="list-room-type list-rom-ami">
+											<ul>
+												<li>
+													<p><b>Amenities:</b> </p>
+												</li>
+												<li><img src="images/icon/a7.png" alt=""> Wi-Fi</li>
+												<li><img src="images/icon/a4.png" alt=""> Air Conditioner </li>
+												<li><img src="images/icon/a3.png" alt=""> Swimming Pool</li>
+												<li><img src="images/icon/a2.png" alt=""> Bar</li>
+											</ul>
+										</div> <span class="home-list-pop-rat list-rom-pric">$420</span>
+										<div class="list-enqu-btn">
+											<ul>
+												<li><a href="#!"><i class="fa fa-usd" aria-hidden="true"></i> Get Quotes</a> </li>
+												<li><a href="#!"><i class="fa fa-commenting-o" aria-hidden="true"></i> Send SMS</a> </li>
+												<li><a href="#!"><i class="fa fa-phone" aria-hidden="true"></i> Call Now</a> </li>
+												<li><a href="#!"><i class="fa fa-usd" aria-hidden="true"></i> Book Now</a> </li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!--END 360 DEGREE MAP: LEFT PART 8-->
+
+						<!--END 360 DEGREE MAP: LEFT PART 8-->
+						<!--LISTING DETAILS: LEFT PART 6-->
+						<div class="pglist-p3 pglist-bg pglist-p-com" id="ld-rew">
+							<div class="pglist-p-com-ti">
+								<h3><span>Write Your</span> Reviews</h3> </div>
+							<div class="list-pg-inn-sp">
+								<div class="list-pg-write-rev">
+									<form class="col">
+										<p>Writing great reviews may help others discover the places that are just apt for them. Here are a few tips to write a good review:</p>
+										<div class="row">
+											<div class="col s12">
+												<fieldset class="rating">
+													<input type="radio" id="star5" name="rating" value="5" />
+													<label class="full" for="star5" title="Awesome - 5 stars"></label>
+													<input type="radio" id="star4half" name="rating" value="4 and a half" />
+													<label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+													<input type="radio" id="star4" name="rating" value="4" />
+													<label class="full" for="star4" title="Pretty good - 4 stars"></label>
+													<input type="radio" id="star3half" name="rating" value="3 and a half" />
+													<label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+													<input type="radio" id="star3" name="rating" value="3" />
+													<label class="full" for="star3" title="Meh - 3 stars"></label>
+													<input type="radio" id="star2half" name="rating" value="2 and a half" />
+													<label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+													<input type="radio" id="star2" name="rating" value="2" />
+													<label class="full" for="star2" title="Kinda bad - 2 stars"></label>
+													<input type="radio" id="star1half" name="rating" value="1 and a half" />
+													<label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+													<input type="radio" id="star1" name="rating" value="1" />
+													<label class="full" for="star1" title="Sucks big time - 1 star"></label>
+													<input type="radio" id="starhalf" name="rating" value="half" />
+													<label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+												</fieldset>
+											</div>
+										</div>
+										<div class="row">
+											<div class="input-field col s6">
+												<input id="re_name" type="text" class="validate">
+												<label for="re_name">Full Name</label>
+											</div>
+											<div class="input-field col s6">
+												<input id="re_mob" type="number" class="validate">
+												<label for="re_mob">Mobile</label>
+											</div>
+										</div>
+										<div class="row">
+											<div class="input-field col s6">
+												<input id="re_mail" type="email" class="validate">
+												<label for="re_mail">Email id</label>
+											</div>
+											<div class="input-field col s6">
+												<input id="re_city" type="text" class="validate">
+												<label for="re_city">City</label>
+											</div>
+										</div>
+										<div class="row">
+											<div class="input-field col s12">
+												<textarea id="re_msg" class="materialize-textarea"></textarea>
+												<label for="re_msg">Write review</label>
+											</div>
+										</div>
+										<div class="row">
+											<div class="input-field col s12"> <a class="waves-effect waves-light btn-large full-btn" href="#!">Submit Review</a> </div>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+						<!--END LISTING DETAILS: LEFT PART 6-->
+						<!--LISTING DETAILS: LEFT PART 5-->
+						<div class="pglist-p3 pglist-bg pglist-p-com" id="ld-rer">
+							<div class="pglist-p-com-ti">
+								<h3><span>User</span> Reviews</h3> </div>
+							<div class="list-pg-inn-sp">
+								<div class="lp-ur-all">
+									<div class="lp-ur-all-left">
+										<div class="lp-ur-all-left-1">
+											<div class="lp-ur-all-left-11">Excellent</div>
+											<div class="lp-ur-all-left-12">
+												<div class="lp-ur-all-left-13"></div>
+											</div>
+										</div>
+										<div class="lp-ur-all-left-1">
+											<div class="lp-ur-all-left-11">Good</div>
+											<div class="lp-ur-all-left-12">
+												<div class="lp-ur-all-left-13 lp-ur-all-left-Good"></div>
+											</div>
+										</div>
+										<div class="lp-ur-all-left-1">
+											<div class="lp-ur-all-left-11">Satisfactory</div>
+											<div class="lp-ur-all-left-12">
+												<div class="lp-ur-all-left-13 lp-ur-all-left-satis"></div>
+											</div>
+										</div>
+										<div class="lp-ur-all-left-1">
+											<div class="lp-ur-all-left-11">Below Average</div>
+											<div class="lp-ur-all-left-12">
+												<div class="lp-ur-all-left-13 lp-ur-all-left-below"></div>
+											</div>
+										</div>
+										<div class="lp-ur-all-left-1">
+											<div class="lp-ur-all-left-11">Below Average</div>
+											<div class="lp-ur-all-left-12">
+												<div class="lp-ur-all-left-13 lp-ur-all-left-poor"></div>
+											</div>
+										</div>
+									</div>
+									<div class="lp-ur-all-right">
+										<h5>Overall Ratings</h5>
+										<p><span>4.5 <i class="fa fa-star" aria-hidden="true"></i></span> based on 242 reviews</p>
+									</div>
+								</div>
+								<div class="lp-ur-all-rat">
+									<h5>Reviews</h5>
+									<ul>
+										<li>
+											<div class="lr-user-wr-img"> <img src="images/users/2.png" alt=""> </div>
+											<div class="lr-user-wr-con">
+												<h6>Jacob Michael <span>4.5 <i class="fa fa-star" aria-hidden="true"></i></span></h6> <span class="lr-revi-date">19th January, 2017</span>
+												<p>Good service... nice and clean rooms... very good spread of buffet and friendly staffs. Located in heart of city and easy to reach any places in a short distance. </p>
+												<ul>
+													<li><a href="#!"><span>Like</span><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></a> </li>
+													<li><a href="#!"><span>Dis-Like</span><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></a> </li>
+													<li><a href="#!"><span>Report</span> <i class="fa fa-flag-o" aria-hidden="true"></i></a> </li>
+													<li><a href="#!"><span>Comments</span> <i class="fa fa-commenting-o" aria-hidden="true"></i></a> </li>
+													<li><a href="#!"><span>Share Now</span>  <i class="fa fa-facebook" aria-hidden="true"></i></a> </li>
+													<li><a href="#!"><i class="fa fa-google-plus" aria-hidden="true"></i></a> </li>
+													<li><a href="#!"><i class="fa fa-twitter" aria-hidden="true"></i></a> </li>
+													<li><a href="#!"><i class="fa fa-linkedin" aria-hidden="true"></i></a> </li>
+													<li><a href="#!"><i class="fa fa-youtube" aria-hidden="true"></i></a> </li>
+												</ul>
+											</div>
+										</li>
+
+									</ul>
+								</div>
+							</div>
+						</div>
+						<!--END LISTING DETAILS: LEFT PART 5-->
+					</div>
+					<div class="list-pg-rt">
+						<!--LISTING DETAILS: LEFT PART 7-->
+
+						<!--END LISTING DETAILS: LEFT PART 7-->
+						<!--LISTING DETAILS: LEFT PART 7-->
+						<div class="pglist-p3 pglist-bg pglist-p-com">
+							<div class="pg-list-user-pro"> <img src="images/users/8.png" alt=""> </div>
+							<div class="list-pg-inn-sp">
+								<div class="list-pg-upro">
+									<h5>Kevin Jack</h5>
+									<p>Member since July 2017</p> <a class="waves-effect waves-light btn-large full-btn list-pg-btn" href="#!">Contact User</a> </div>
+							</div>
+						</div>
+						<!--END LISTING DETAILS: LEFT PART 7-->
+						<!--LISTING DETAILS: LEFT PART 8-->
+
+						<!--END LISTING DETAILS: LEFT PART 8-->
+						<!--LISTING DETAILS: LEFT PART 9-->
+
+						<!--END LISTING DETAILS: LEFT PART 9-->
+						<!--LISTING DETAILS: LEFT PART 10-->
+						<div class="list-mig-like">
+							<div class="list-ri-spec-tit">
+								<h3><span>You might</span> like this</h3> </div>
+							<a href="#!">
+								<div class="list-mig-like-com">
+									<div class="list-mig-lc-img"> <img src="images/listing/1.jpg" alt="" /> <span class="home-list-pop-rat list-mi-pr">$720</span> </div>
+									<div class="list-mig-lc-con">
+										<div class="list-rat-ch list-room-rati"> <span>4.0</span> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> </div>
+										<h5>Holiday Inn Express</h5>
+										<p>Illinois City,</p>
+									</div>
+								</div>
+							</a>
+							<a href="#!">
+								<div class="list-mig-like-com">
+									<div class="list-mig-lc-img"> <img src="images/listing/2.jpg" alt="" /> <span class="home-list-pop-rat list-mi-pr">$420</span> </div>
+									<div class="list-mig-lc-con">
+										<div class="list-rat-ch list-room-rati"> <span>3.0</span> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> </div>
+										<h5>InterContinental</h5>
+										<p>Illinois City,</p>
+									</div>
+								</div>
+							</a>
+							<a href="#!">
+								<div class="list-mig-like-com">
+									<div class="list-mig-lc-img"> <img src="images/listing/3.jpg" alt="" /> <span class="home-list-pop-rat list-mi-pr">$380</span> </div>
+									<div class="list-mig-lc-con">
+										<div class="list-rat-ch list-room-rati"> <span>5.0</span> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> </div>
+										<h5>Staybridger Suites</h5>
+										<p>Illinois City,</p>
+									</div>
+								</div>
+							</a>
+						</div>
+						<!--END LISTING DETAILS: LEFT PART 10-->
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--MOBILE APP-->
+
+
+
 @endsection

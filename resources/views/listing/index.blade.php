@@ -1,211 +1,292 @@
 @extends('layout.app')
 @section('content')
-    <div id="page-content">
-        <div class="container">
-            <ol class="breadcrumb">
-                
-            </ol>
-            <div class="row">
-                <div class="col-md-9 col-sm-9">
-                    <section class="page-title">
-                        <h1>Row Listing</h1>
-                        <h4><a href="{{ route('listing.create') }}">Row Listing</a></h4>
-                    </section>
-                    <!--end section-title-->
 
-                    <section>
-                        <div class="search-results-controls clearfix">
-                            <div class="pull-left">
-                                <a href="listing-grid-right-sidebar.html" class="circle-icon"><i class="fa fa-th"></i></a>
-                                <a href="listing-row-right-sidebar.html" class="circle-icon active"><i class="fa fa-bars"></i></a>
+<section class="list-page-enq">
+    <div class="container">
+        <div class="row">
+            <div class="lpe-com-main">
+                <div class="lpe-com lpe-left">
+                    <h4>Are you looking for</h4>
+                    <h2>Best Hotel Services</h2>
+                    <h5>in your city</h5> </div>
+                <div class="lpe-com lpe-right">
+                    <form>
+                        <h3>Get a free consultation!</h3>
+                        <p>It is a long established fact that a reader will be distracted by the readable.</p>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input id="gfc_name" type="text" class="validate" required>
+                                <label for="gfc_name">Name</label>
                             </div>
-                            <!--end left-->
-                            <div class="pull-right">
-                                <div class="input-group inputs-underline min-width-150px">
-                                    <select class="form-control selectpicker" name="sort">
-                                        <option value="">Sort by</option>
-                                        <option value="1">Price</option>
-                                        <option value="2">Distance</option>
-                                        <option value="3">Title</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <!--end right-->
                         </div>
-                        <!--end search-results-controls-->
-                    </section>
-
-                    <section>
-                        
-                        <!--end item.row-->
-                        
-                        <!--end item.row-->
-                        
-                        @foreach ($listings as $listing)
-                            <div class="item item-row" data-id="15" data-latitude="40.73659201" data-longitude="-73.80778313">
-                                <figure class="ribbon">Top</figure>
-                                <a href="{{ route('listing.details', ['id'=>$listing->id]) }}">
-                                    <div class="image">
-                                        <figure>Happy hour: 18:00 - 19:00</figure>
-                                        <img src="{{ asset('assets/img/items/mini.jpg') }}" alt="">
-                                    </div>
-                                    <!--end image-->
-                                    <div class="map"></div>
-                                    <div class="description">
-                                        <h3>{{ $listing->listing_title }} </h3>
-                                        <h4>{{ $listing->category }}</h4>
-                                        <div class="label label-default">{{ $listing->tags }}</div>
-                                    </div>
-                                    <!--end description-->
-                                    <div class="additional-info">
-                                        <div class="rating-passive" data-rating="3">
-                                            <span class="stars"></span>
-                                            <span class="reviews">{{ $listing->id }}</span>
-                                        </div>
-                                    </div>
-                                    <!--end additional-info-->
-                                </a>
-                                <div class="controls-more">
-                                    <ul>
-                                        <li><a href="#">Add to favorites</a></li>
-                                        <li><a href="#">Add to watchlist</a></li>
-                                        <li><a href="#" class="quick-detail">Quick detail</a></li>
-                                    </ul>
-                                </div>
-                                <!--end controls-more-->
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input id="gfc_mob" type="number" class="validate">
+                                <label for="gfc_mob">Mobile</label>
                             </div>
-
-                         @endforeach
-
-
-
-
-                        <!--end item.row-->
-                        
-                        <!--end item.row-->
-                        
-                        <!--end item.row-->
-                       
-                        <!--end item.row-->
-                    </section>
-
-                    
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input id="gfc_mail" type="email" class="validate">
+                                <label for="gfc_mail">Email</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <textarea id="gfc_msg" class="validate"></textarea>
+                                <label for="gfc_msg">Message</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input type="submit" value="SUBMIT" class="waves-effect waves-light btn-large full-btn list-red-btn"> </div>
+                        </div>
+                    </form>
                 </div>
-                <!--end col-md-9-->
-
-                <div class="col-md-3 col-sm-3">
-                    <aside class="sidebar">
-                        <section>
-                            <h2>Search Filter</h2>
-                            <form class="form inputs-underline">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" name="keyword" placeholder="Enter keyword">
-                                </div>
-                                <!--end form-group-->
-                                <div class="form-group">
-                                    <select class="form-control selectpicker" name="location">
-                                        <option value="">Location</option>
-                                            <option value="1">New York</option>
-                                            <option value="2">Washington</option>
-                                            <option value="3">London</option>
-                                            <option value="4">Paris</option>
-                                    </select>
-                                </div>
-                                <!--end form-group-->
-                                <div class="form-group">
-                                    <select class="form-control selectpicker" name="category">
-                                        <option value="">Category</option>
-                                            <option value="1">Restaurant</option>
-                                            <option value="2">Event</option>
-                                            <option value="3">Adrenaline</option>
-                                            <option value="4">Sport</option>
-                                            <option value="5">Wellness</option>
-                                    </select>
-                                </div>
-                                <!--end form-group-->
-                                <div class="form-group">
-                                    <input type="text" class="form-control date-picker" name="min-price" placeholder="Event Date">
-                                </div>
-                                <!--end form-group-->
-                                <div class="form-group">
-                                    <div class="ui-slider" id="price-slider" data-value-min="10" data-value-max="400" data-value-type="price" data-currency="$" data-currency-placement="before">
-                                        <div class="values clearfix">
-                                            <input class="value-min" name="value-min[]" readonly>
-                                            <input class="value-max" name="value-max[]" readonly>
-                                        </div>
-                                        <div class="element"></div>
-                                    </div>
-                                    <!--end price-slider-->
-                                </div>
-                                <!--end form-group-->
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-primary pull-right">Search Now<i class="fa fa-search"></i></button>
-                                </div>
-                                <!--end form-group-->
-                            </form>
-                        </section>
-                        <section>
-                            <h2>Recent Items</h2>
-                            <div class="item" data-id="1">
-                                <a href="detail.html">
-                                    <div class="description">
-                                        <figure>Average Price: $8 - $30</figure>
-                                        <div class="label label-default">Restaurant</div>
-                                        <h3>Marky’s Restaurant</h3>
-                                        <h4>63 Birch Street</h4>
-                                    </div>
-                                    <!--end description-->
-                                    <div class="image bg-transfer">
-                                        <img src="assets/img/items/mini.jpg" alt="">
-                                    </div>
-                                    <!--end image-->
-                                </a>
-                                <div class="controls-more">
-                                    <ul>
-                                        <li><a href="#">Add to favorites</a></li>
-                                        <li><a href="#">Add to watchlist</a></li>
-                                        <li><a href="#" class="quick-detail">Quick detail</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <!--end item-->
-                           
-                            <!--end item-->
-                            <div class="item" data-id="15">
-                                <figure class="ribbon">Top</figure>
-                                <a href="detail.html">
-                                    <div class="description">
-                                        <figure>Happy hour: 18:00 - 19:00</figure>
-                                        <div class="label label-default">Bar & Grill</div>
-                                        <h3>Bambi Planet Houseboat Bar& Grill </h3>
-                                        <h4>3857 Losh Lane</h4>
-                                    </div>
-                                    <!--end description-->
-                                    <div class="image bg-transfer">
-                                        <img src="assets/img/items/3.jpg" alt="">
-                                    </div>
-                                    <!--end image-->
-                                </a>
-                                <div class="controls-more">
-                                    <ul>
-                                        <li><a href="#">Add to favorites</a></li>
-                                        <li><a href="#">Add to watchlist</a></li>
-                                        <li><a href="#" class="quick-detail">Quick detail</a></li>
-                                    </ul>
-                                </div>
-                                <!--end controls-more-->
-                            </div>
-                            <!--end item-->
-                        </section>
-                    </aside>
-                    <!--end sidebar-->
-                </div>
-                <!--end col-md-4-->
             </div>
-            <!--end row-->
         </div>
-        <!--end container-->
     </div>
+</section>
+<!--END LISTING LEAD FORM-->
+<section class="dir-alp-1 dir-pa-sp-top">
+    <div class="container">
+        <div class="row">
+            <div class="dir-alp-con dir-alp-con-1">
+                <div class="col-md-3 dir-alp-con-left">
+                    <div class="dir-alp-con-left-1">
+                        <h3>Nearby Hotels(07)</h3> </div>
+                    <div class="dir-hom-pre dir-alp-left-ner-notb">
+                        <ul>
+                            <!--==========NEARBY LISTINGS============-->
+                            <li>
+                                <a href="listing-details.html">
+                                    <div class="list-left-near lln1"> <img src="images/services/s1.jpeg" alt="" /> </div>
+                                    <div class="list-left-near lln2">
+                                        <h5>Property Getaways</h5> <span>City: illunois, United States</span> </div>
+                                    <div class="list-left-near lln3"> <span>5.0</span> </div>
+                                </a>
+                            </li>
+                            <!--==========END NEARBY LISTINGS============-->
+                            <!--==========NEARBY LISTINGS============-->
+                            <li>
+                                <a href="listing-details.html">
+                                    <div class="list-left-near lln1"> <img src="images/services/s2.jpeg" alt="" /> </div>
+                                    <div class="list-left-near lln2">
+                                        <h5>Home Trends</h5> <span>City: illunois, United States</span> </div>
+                                    <div class="list-left-near lln3"> <span>4.0</span> </div>
+                                </a>
+                            </li>
+                            <!--==========END NEARBY LISTINGS============-->
+                            <!--==========NEARBY LISTINGS============-->
+                            <li>
+                                <a href="listing-details.html">
+                                    <div class="list-left-near lln1"> <img src="images/services/s3.jpeg" alt="" /> </div>
+                                    <div class="list-left-near lln2">
+                                        <h5>Security System</h5> <span>City: illunois, United States</span> </div>
+                                    <div class="list-left-near lln3"> <span>4.4</span> </div>
+                                </a>
+                            </li>
+                            <!--==========END NEARBY LISTINGS============-->
+                            <!--==========NEARBY LISTINGS============-->
+                            <li>
+                                <a href="listing-details.html">
+                                    <div class="list-left-near lln1"> <img src="images/services/s4.jpeg" alt="" /> </div>
+                                    <div class="list-left-near lln2">
+                                        <h5>Distance Educations</h5> <span>City: illunois, United States</span> </div>
+                                    <div class="list-left-near lln3"> <span>3.8</span> </div>
+                                </a>
+                            </li>
+                            <!--==========END NEARBY LISTINGS============-->
+                            <!--==========NEARBY LISTINGS============-->
+                            <li>
+                                <a href="listing-details.html">
+                                    <div class="list-left-near lln1"> <img src="images/services/s5.jpeg" alt="" /> </div>
+                                    <div class="list-left-near lln2">
+                                        <h5>Fresh Cake Shops</h5> <span>City: illunois, United States</span> </div>
+                                    <div class="list-left-near lln3"> <span>4.8</span> </div>
+                                </a>
+                            </li>
+                            <!--==========END NEARBY LISTINGS============-->
+                            <!--==========NEARBY LISTINGS============-->
+                            <li>
+                                <a href="listing-details.html">
+                                    <div class="list-left-near lln1"> <img src="images/services/s6.jpeg" alt="" /> </div>
+                                    <div class="list-left-near lln2">
+                                        <h5>Chicago Automobiles</h5> <span>City: illunois, United States</span> </div>
+                                    <div class="list-left-near lln3"> <span>5.0</span> </div>
+                                </a>
+                            </li>
+                            <!--==========END NEARBY LISTINGS============-->
+                            <!--==========NEARBY LISTINGS============-->
+                            <li>
+                                <a href="listing-details.html">
+                                    <div class="list-left-near lln1"> <img src="images/services/s7.jpeg" alt="" /> </div>
+                                    <div class="list-left-near lln2">
+                                        <h5>Bike Service Centers</h5> <span>City: illunois, United States</span> </div>
+                                    <div class="list-left-near lln3"> <span>5.0</span> </div>
+                                </a>
+                            </li>
+                            <!--==========END NEARBY LISTINGS============-->
+                        </ul>
+                    </div>
+                    <!--==========Sub Category Filter============-->
+                    <div class="dir-alp-l3 dir-alp-l-com">
+                        <h4>Sub Category Filter</h4>
+                        <div class="dir-alp-l-com1 dir-alp-p3">
+                            <form action="#">
+                                <ul>
+                                    <li>
+                                        <input type="checkbox" id="scf1" />
+                                        <label for="scf1">Hortels & Resorts</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" id="scf2" />
+                                        <label for="scf2">Fitness Care</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" id="scf3" />
+                                        <label for="scf3">Educations</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" id="scf4" />
+                                        <label for="scf4">Property</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" id="scf5" />
+                                        <label for="scf5">Home Services</label>
+                                    </li>
+                                </ul>
+                            </form> <a href="#!" class="list-view-more-btn">view more</a> </div>
+                    </div>
+                    <!--==========End Sub Category Filter============-->
+                    <!--==========Sub Category Filter============-->
+                    <div class="dir-alp-l3 dir-alp-l-com">
+                        <h4>Distance</h4>
+                        <div class="dir-alp-l-com1 dir-alp-p3">
+                            <form>
+                                <ul>
+                                    <li>
+                                        <input class="with-gap" name="group1" type="radio" id="ldis1" />
+                                        <label for="ldis1">00 to 02km</label>
+                                    </li>
+                                    <li>
+                                        <input class="with-gap" name="group1" type="radio" id="ldis2" />
+                                        <label for="ldis2">02 to 05km</label>
+                                    </li>
+                                    <li>
+                                        <input class="with-gap" name="group1" type="radio" id="ldis3" />
+                                        <label for="ldis3">05 to 10km</label>
+                                    </li>
+                                    <li>
+                                        <input class="with-gap" name="group1" type="radio" id="ldis4" />
+                                        <label for="ldis4">10 to 20km</label>
+                                    </li>
+                                    <li>
+                                        <input class="with-gap" name="group1" type="radio" id="ldis5" />
+                                        <label for="ldis5">20 to 30km</label>
+                                    </li>
+                                </ul>
+                            </form> <a href="#!" class="list-view-more-btn">view more</a> </div>
+                    </div>
+                    <!--==========End Sub Category Filter============-->
+                    <!--==========Sub Category Filter============-->
+                    <div class="dir-alp-l3 dir-alp-l-com">
+                        <h4>Ratings</h4>
+                        <div class="dir-alp-l-com1 dir-alp-p3">
+                            <form>
+                                <ul>
+                                    <li>
+                                        <input type="checkbox" class="filled-in" id="lr1" />
+                                        <label for="lr1"> <span class="list-rat-ch"> <span>5.0</span> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" class="filled-in" id="lr2" />
+                                        <label for="lr2"> <span class="list-rat-ch"> <span>4.0</span> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" class="filled-in" id="lr3" />
+                                        <label for="lr3"> <span class="list-rat-ch"> <span>3.0</span> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" class="filled-in" id="lr4" />
+                                        <label for="lr4"> <span class="list-rat-ch"> <span>2.0</span> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" class="filled-in" id="lr5" />
+                                        <label for="lr5"> <span class="list-rat-ch"> <span>1.0</span> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> </span>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </form> <a href="javascript:void(0);" class="list-view-more-btn">view more</a> </div>
+                    </div>
+                    <!--==========End Sub Category Filter============-->
+                </div>
+                <div class="col-md-9 dir-alp-con-right">
+                    <div class="dir-alp-con-right-1">
+                        <div class="row">
+                            <!--LISTINGS-->
+
+                            @foreach ($listings as $listing)
+                            <a href="{{ route('listing.details', ['id'=>$listing->id]) }}">
+                            <div class="home-list-pop list-spac list-spac-1">
+                                <!--LISTINGS IMAGE-->
+                                <div class="col-md-3"> <img src="images/services/s10.jpeg" alt="" /> </div>
+                                <!--LISTINGS: CONTENT-->
+                                <div class="col-md-9 home-list-pop-desc inn-list-pop-desc"> <h3>{{ $listing->listing_title }}</h3>
+                                    <h4>{{ $listing->category }}</h4>
+                                    <p><b>Address:</b>  {{ $listing->address }} </p>
+                                    <div class="list-number">
+                                        <ul>
+                                            <li><img src="images/icon/phone.png" alt=""> +01 1245 2541, +62 6541 6528</li>
+                                            <li><img src="images/icon/mail.png" alt=""> localdir@webdir.com</li>
+                                        </ul>
+                                    </div> <span class="home-list-pop-rat">4.2</span>
+                                    <div class="list-enqu-btn">
+                                        {{-- <ul>
+                                            <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i> Write Review</a> </li>
+                                            <li><a href="#"><i class="fa fa-commenting-o" aria-hidden="true"></i> Send SMS</a> </li>
+                                            <li><a href="#"><i class="fa fa-phone" aria-hidden="true"></i> Call Now</a> </li>
+                                            <li><a href="#" data-dismiss="modal" data-toggle="modal" data-target="#list-quo"><i class="fa fa-usd" aria-hidden="true"></i> Get Quotes</a> </li>
+                                        </ul> --}}
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
+                            </a>
+                            <!--LISTINGS END-->
+                            <!--LISTINGS-->
+
+                            <!--LISTINGS END-->
+                            <!--LISTINGS-->
+
+                            <!--LISTINGS END-->
+                        </div>
+                        <div class="row">
+                            <ul class="pagination list-pagenat">
+                                <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a> </li>
+                                <li class="active"><a href="#!">1</a> </li>
+                                <li class="waves-effect"><a href="#!">2</a> </li>
+                                <li class="waves-effect"><a href="#!">3</a> </li>
+                                <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a> </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+{{-- @endforeach --}}
     <!--end page-content-->
 
    @endsection

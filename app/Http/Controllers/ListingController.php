@@ -56,6 +56,7 @@ class ListingController extends Controller
         $image = $request->file('image');
         $imageName = time() . '.' . $image->getClientOriginalExtension();
         $image->storeAs('public/images', $imageName);
+
         }
 
         $listing = Listing::create($request->all());
@@ -76,7 +77,7 @@ class ListingController extends Controller
      */
     public function show($id)
     {
-        
+
         $listings = Listing::find($id);
         if (!$listings) {
         // Return a 404 error response, or redirect to another page, or show an error message, etc.
